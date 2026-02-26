@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A1-A2 English Comprehension & Writing Skills Test</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            padding: 40px;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .header-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #eee;
+        }
+        
+        .section:last-child {
+            border-bottom: none;
+        }
+        
+        .section-title {
+            color: #667eea;
+            font-size: 22px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .question-block {
+            margin-bottom: 25px;
+            padding: 15px;
+            background: #f9f9f9;
+            border-left: 4px solid #667eea;
+            border-radius: 5px;
+        }
+        
+        .question-number {
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .question-text {
+            color: #333;
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+        
+        .passage {
+            background: #f0f4ff;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            line-height: 1.8;
+            color: #333;
+        }
+        
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .option {
+            display: flex;
+            align-items: center;
+        }
+        
+        .option input[type="radio"],
+        .option input[type="checkbox"] {
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        
+        .option label {
+            cursor: pointer;
+            color: #555;
+            flex: 1;
+        }
+        
+        .option label:hover {
+            color: #667eea;
+        }
+        
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 14px;
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        input[type="text"],
+        input[type="number"] {
+            padding: 8px 12px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            width: 100%;
+            margin-top: 8px;
+        }
+        
+        input[type="text"]:focus,
+        input[type="number"]:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+        
+        button {
+            padding: 12px 30px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-submit {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            flex: 1;
+            max-width: 200px;
+        }
+        
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
+        }
+        
+        .btn-reset {
+            background: #f0f0f0;
+            color: #333;
+            flex: 1;
+            max-width: 200px;
+        }
+        
+        .btn-reset:hover {
+            background: #e0e0e0;
+        }
+        
+        .instructions {
+            background: #e8f4f8;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+            border-left: 4px solid #17a2b8;
+        }
+        
+        .instructions p {
+            color: #333;
+            margin: 5px 0;
+            line-height: 1.6;
+        }
+        
+        .word-bank {
+            background: #fff3cd;
+            padding: 12px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+        
+        .difficulty {
+            display: inline-block;
+            padding: 4px 8px;
+            background: #667eea;
+            color: white;
+            border-radius: 3px;
+            font-size: 12px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>English Level Assessment Test</h1>
+        <p class="header-subtitle">A1 to A2 Transition - Comprehension & Writing Skills</p>
+        
+        <form id="testForm">
+            <!-- INSTRUCTIONS -->
+            <div class="instructions">
+                <p><strong>📋 Test Instructions:</strong></p>
+                <p>This test assesses your English comprehension and writing skills at A1-A2 level.</p>
+                <p>Duration: Approximately 45-60 minutes</p>
+                <p>You will encounter multiple-choice questions, fill-in-the-blanks, reading comprehension, and writing tasks.</p>
+            </div>
+            
+            <!-- SECTION 1: GRAMMAR -->
+            <div class="section">
+                <h2 class="section-title">Section 1: Grammar <span class="difficulty">A1-A2</span></h2>
+                
+                <div class="question-block">
+                    <div class="question-number">Question 1</div>
+                    <div class="question-text">Choose the correct form of "to be":</div>
+                    <div class="question-text"><strong>"She _____ a student."</strong></div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="q1a" name="q1" value="am">
+                            <label for="q1a">am</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q1b" name="q1" value="is">
+                            <label for="q1b">is</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q1c" name="q1" value="are">
+                            <label for="q1c">are</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q1d" name="q1" value="be">
+                            <label for="q1d">be</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question-block">
+                    <div class="question-number">Question 2</div>
+                    <div class="question-text">Complete with the correct article (a/an/the):</div>
+                    <div class="question-text"><strong>"I have _____ apple and _____ orange."</strong></div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="q2a" name="q2" value="an, an">
+                            <label for="q2a">an, an</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q2b" name="q2" value="a, an">
+                            <label for="q2b">a, an</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q2c" name="q2" value="the, the">
+                            <label for="q2c">the, the</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q2d" name="q2" value="a, a">
+                            <label for="q2d">a, a</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question-block">
+                    <div class="question-number">Question 3</div>
+                    <div class="question-text">Choose the correct present simple form:</div>
+                    <div class="question-text"><strong>"He _____ coffee every morning."</strong></div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="q3a" name="q3" value="drink">
+                            <label for="q3a">drink</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q3b" name="q3" value="drinks">
+                            <label for="q3b">drinks</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q3c" name="q3" value="drinking">
+                            <label for="q3c">drinking</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q3d" name="q3" value="drank">
+                            <label for="q3d">drank</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question-block">
+                    <div class="question-number">Question 4</div>
+                    <div class="question-text">Select the correct plural form:</div>
+                    <div class="question-text"><strong>"There are three _____ on the table."</strong></div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="q4a" name="q4" value="book">
+                            <label for="q4a">book</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q4b" name="q4" value="books">
+                            <label for="q4b">books</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q4c" name="q4" value="bookes">
+                            <label for="q4c">bookes</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q4d" name="q4" value="booksies">
+                            <label for="q4d">booksies</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question-block">
+                    <div class="question-number">Question 5</div>
+                    <div class="question-text">Complete with the correct preposition:</div>
+                    <div class="question-text"><strong>"The book is _____ the shelf."</strong></div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="q5a" name="q5" value="in">
+                            <label for="q5a">in</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q5b" name="q5" value="on">
+                            <label for="q5b">on</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q5c" name="q5" value="at">
+                            <label for="q5c">at</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q5d" name="q5" value="under">
+                            <label for="q5d">under</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- SECTION 2: VOCABULARY -->
+            <div class="section">
+                <h2 class="section-title">Section 2: Vocabulary <span class="difficulty">A1-A2</span></h2>
+                
+                <div class="question-block">
+                    <div class="question-number">Question 6</div>
+                    <div class="question-text">What does "happy" mean?</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="q6a" name="q6" value="sad">
+                            <label for="q6a">sad</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q6b" name="q6" value="joyful">
+                            <label for="q6b">joyful</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q6c" name="q6" value="tired">
+                            <label for="q6c">tired</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q6d" name="q6" value="angry">
+                            <label for="q6d">angry</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question-block">
+                    <div class="question-number">Question 7</div>
+                    <div class="question-text">Which word is a fruit?</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="q7a" name="q7" value="carrot">
+                            <label for="q7a">carrot</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q7b" name="q7" value="apple">
+                            <label for="q7b">apple</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q7c" name="q7" value="potato">
+                            <label for="q7c">potato</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q7d" name="q7" value="onion">
+                            <label for="q7d">onion</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question-block">
+                    <div class="question-number">Question 8</div>
+                    <div class="question-text">What is the opposite of "hot"?</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="q8a" name="q8" value="warm">
+                            <label for="q8a">warm</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q8b" name="q8" value="cold">
+                            <label for="q8b">cold</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q8c" name="q8" value="cool">
+                            <label for="q8c">cool</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q8d" name="q8" value="freezing">
+                            <label for="q8d">freezing</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question-block">
+                    <div class="question-number">Question 9</div>
+                    <div class="question-text">Complete the sentence with the correct word:</div>
+                    <div class="question-text"><strong>"I like to _____ in the park every weekend."</strong></div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="q9a" name="q9" value="run">
+                            <label for="q9a">run</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q9b" name="q9" value="cook">
+                            <label for="q9b">cook</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q9c" name="q9" value="sleep">
+                            <label for="q9c">sleep</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q9d" name="q9" value="work">
+                            <label for="q9d">work</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question-block">
+                    <div class="question-number">Question 10</div>
+                    <div class="question-text">Which word means "to study"?</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="q10a" name="q10" value="learn">
+                            <label for="q10a">learn</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q10b" name="q10" value="teach">
+                            <label for="q10b">teach</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q10c" name="q10" value="read">
+                            <label for="q10c">read</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q10d" name="q10" value="listen">
+                            <label for="q10d">listen</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- SECTION 3: READING COMPREHENSION -->
+            <div class="section">
+                <h2 class="section-title">Section 3: Reading Comprehension <span class="difficulty">A1-A2</span></h2>
+                
+                <div class="instructions">
+                    <p><strong>📖 Read the following passage and answer the questions:</strong></p>
+                </div>
+                
+                <div class="passage">
+                    <strong>My Daily Routine</strong><br><br>
+                    My name is Maria. I am 22 years old and I am a student. Every day, I wake up at 7 o'clock in the morning. I have breakfast at 7:30. My breakfast usually consists of bread, butter, and tea. After breakfast, I go to university at 8:00. My classes are from 9:00 to 1:00 PM.<br><br>
+                    After university, I go home and have lunch at 2:00 PM. My lunch is usually rice, vegetables, and chicken. In the afternoon, I study or do my homework. At 6:00 PM, I have dinner with my family. We like to talk about our day during dinner.<br><br>
+                    In the evening, I relax and watch TV or read books. I like to read books about adventure and mystery. I go to bed at 11:00 PM. I usually sleep well at night.
+                </div>
+                
+                <div class="question-block">
+                    <div class="question-number">Question 11</div>
+                    <div class="question-text">How old is Maria?</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="q11a" name="q11" value="20">
+                            <label for="q11a">20 years old</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q11b" name="q11" value="22">
+                            <label for="q11b">22 years old</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q11c" name="q11" value="25">
+                            <label for="q11c">25 years old</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q11d" name="q11" value="30">
+                            <label for="q11d">30 years old</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question-block">
+                    <div class="question-number">Question 12</div>
+                    <div class="question-text">What time does Maria have breakfast?</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="q12a" name="q12" value="7:00">
+                            <label for="q12a">7:00 AM</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q12b" name="q12" value="7:30">
+                            <label for="q12b">7:30 AM</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q12c" name="q12" value="8:00">
+                            <label for="q12c">8:00 AM</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q12d" name="q12" value="9:00">
+                            <label for="q12d">9:00 AM</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question-block">
+                    <div class="question-number">Question 13</div>
+                    <div class="question-text">What does Maria usually have for breakfast?</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="q13a" name="q13" value="eggs">
+                            <label for="q13a">eggs and milk</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q13b" name="q13" value="bread">
+                            <label for="q13b">bread, butter, and tea</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q13c" name="q13" value="fruit">
+                            <label for="q13c">fruit and juice</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q13d" name="q13" value="cereal">
+                            <label for="q13d">cereal and milk</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question-block">
+                    <div class="question-number">Question 14</div>
+                    <div class="question-text">When does Maria go to bed?</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="q14a" name="q14" value="9:00">
+                            <label for="q14a">9:00 PM</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q14b" name="q14" value="10:00">
+                            <label for="q14b">10:00 PM</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q14c" name="q14" value="11:00">
+                            <label for="q14c">11:00 PM</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q14d" name="q14" value="12:00">
+                            <label for="q14d">12:00 AM</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question-block">
+                    <div class="question-number">Question 15</div>
+                    <div class="question-text">What kind of books does Maria like to read?</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="q15a" name="q15" value="romance">
+                            <label for="q15a">romance and love stories</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q15b" name="q15" value="adventure">
+                            <label for="q15b">adventure and mystery</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q15c" name="q15" value="history">
+                            <label for="q15c">history books</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q15d" name="q15" value="cooking">
+                            <label for="q15d">cooking books</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- SECTION 4: EXPRESSION COMPREHENSION (Fill in the blanks) -->
+            <div class="section">
+                <h2 class="section-title">Section 4: Expression Comprehension <span class="difficulty">A1-A2</span></h2>
+                
+                <div class="word-bank">
+                    <strong>Word Bank:</strong> between, because, although, therefore, however
+                </div>
+                
+                <div class="question-block">
+                    <div class="question-number">Question 16</div>
+                    <div class="question-text">Complete with the correct expression:</div>
+                    <div class="question-text"><strong>"I like to walk in the park _____ the weather is nice."</strong></div>
+                    <input type="text" name="q16" placeholder="Type the word here">
+                </div>
+                
+                <div class="question-block">
+                    <div class="question-number">Question 17</div>
+                    <div class="question-text">Fill in the blank:</div>
+                    <div class="question-text"><strong>"She is very intelligent; _____, she sometimes makes mistakes."</strong></div>
+                    <input type="text" name="q17" placeholder="Type the word here">
+                </div>
+                
+                <div class="question-block">
+                    <div class="question-number">Question 18</div>
+                    <div class="question-text">Complete the sentence:</div>
+                    <div class="question-text"><strong>"The difference _____ these two books is very clear."</strong></div>
+                    <input type="text" name="q18" placeholder="Type the word here">
+                </div>
+                
+                <div class="question-block">
+                    <div class="question-number">Question 19</div>
+                    <div class="question-text">Match the expression to complete the sentence:</div>
+                    <div class="question-text"><strong>"He did not study; _____, he failed the exam."</strong></div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="q19a" name="q19" value="therefore">
+                            <label for="q19a">therefore</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q19b" name="q19" value="although">
+                            <label for="q19b">although</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q19c" name="q19" value="however">
+                            <label for="q19c">however</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q19d" name="q19" value="between">
+                            <label for="q19d">between</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question-block">
+                    <div class="question-number">Question 20</div>
+                    <div class="question-text">Choose the correct expression:</div>
+                    <div class="question-text"><strong>"_____ it was raining, she went to school."</strong></div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="q20a" name="q20" value="Because">
+                            <label for="q20a">Because</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q20b" name="q20" value="Although">
+                            <label for="q20b">Although</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q20c" name="q20" value="Therefore">
+                            <label for="q20c">Therefore</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q20d" name="q20" value="Between">
+                            <label for="q20d">Between</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- SECTION 5: SIMPLE ESSAY WRITING -->
+            <div class="section">
+                <h2 class="section-title">Section 5: Simple Essay Writing <span class="difficulty">A2</span></h2>
+                
+                <div class="question-block">
+                    <div class="question-number">Essay Question 1</div>
+                    <div class="question-text">
+                        <strong>Write a short essay (100-150 words) about your favorite hobby or activity.</strong><br><br>
+                        Guidelines:<br>
+                        - What is your favorite hobby/activity?<br>
+                        - Why do you like it?<br>
+                        - How often do you do it?<br>
+                        - Who do you do it with?<br>
+                    </div>
+                    <textarea name="essay1" placeholder="Write your essay here..."></textarea>
+                </div>
+                
+                <div class="question-block">
+                    <div class="question-number">Essay Question 2</div>
+                    <div class="question-text">
+                        <strong>Write a simple description (80-120 words) of your daily morning routine.</strong><br><br>
+                        Include:<br>
+                        - What time do you wake up?<br>
+                        - What do you do first?<br>
+                        - What do you eat for breakfast?<br>
+                        - How do you go to school/work?<br>
+                    </div>
+                    <textarea name="essay2" placeholder="Write your description here..."></textarea>
+                </div>
+                
+                <div class="question-block">
+                    <div class="question-number">Essay Question 3</div>
+                    <div class="question-text">
+                        <strong>Write a short thank you letter or email (100-150 words) to someone you appreciate.</strong><br><br>
+                        Include:<br>
+                        - A polite greeting<br>
+                        - Reasons why you appreciate them<br>
+                        - A specific example<br>
+                        - A proper closing<br>
+                    </div>
+                    <textarea name="essay3" placeholder="Write your letter/email here..."></textarea>
+                </div>
+            </div>
+            
+            <!-- SUBMIT BUTTON -->
+            <div class="button-group">
+                <button type="reset" class="btn-reset">Clear All Answers</button>
+                <button type="submit" class="btn-submit">Submit Test</button>
+            </div>
+        </form>
+    </div>
+    
+    <script>
+        document.getElementById('testForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Basic validation
+            const essays = [
+                document.querySelector('textarea[name="essay1"]').value.trim(),
+                document.querySelector('textarea[name="essay2"]').value.trim(),
+                document.querySelector('textarea[name="essay3"]').value.trim()
+            ];
+            
+            let allFilled = true;
+            
+            // Check if all radio buttons for grammar, vocabulary, reading comprehension, and expressions have selections
+            for (let i = 1; i <= 20; i++) {
+                const radios = document.querySelectorAll(`input[name="q${i}"]`);
+                if (radios.length > 0) {
+                    const isChecked = Array.from(radios).some(radio => radio.checked);
+                    if (!isChecked) {
+                        allFilled = false;
+                        break;
+                    }
+                }
+            }
+            
+            // Check if essays are filled
+            if (essays.some(essay => essay === '')) {
+                allFilled = false;
+            }
+            
+            if (!allFilled) {
+                alert('⚠️ Please answer all questions before submitting the test.');
+                return;
+            }
+            
+            // Prepare data for submission
+            const formData = new FormData(this);
+            
+            // Create a summary
+            let summary = '📊 Test Submission Summary\n\n';
+            summary += 'Thank you for completing the A1-A2 English Level Assessment Test!\n\n';
+            summary += 'Your answers have been recorded:\n';
+            summary += '✓ Section 1: Grammar (Questions 1-5) - Completed\n';
+            summary += '✓ Section 2: Vocabulary (Questions 6-10) - Completed\n';
+            summary += '✓ Section 3: Reading Comprehension (Questions 11-15) - Completed\n';
+            summary += '✓ Section 4: Expression Comprehension (Questions 16-20) - Completed\n';
+            summary += '✓ Section 5: Essay Writing (3 essays) - Completed\n\n';
+            summary += 'Your test will be reviewed by an instructor within 3-5 business days.\n';
+            summary += 'You will receive feedback on your grammar, vocabulary, writing skills, and comprehension level.\n\n';
+            summary += 'Good luck! 🎓';
+            
+            alert(summary);
+            
+            // In a real application, you would send the data to a server
+            console.log('Form data would be sent to server:', Object.fromEntries(formData));
+            
+            // Optionally, you can reset the form after submission
+            // this.reset();
+        });
+    </script>
+</body>
+</html>
